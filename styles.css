@@ -1,0 +1,157 @@
+/* ===== Colores (tema azul) ===== */
+:root {
+  --fondo: #0b1426;
+  --panel: #111d36;
+  --tarjeta: #172746;
+  --borde: #26396a;
+  --texto: #e8eefc;
+  --gris: #8ea3c9;
+  --azul: #3b82f6;
+  --celeste: #38bdf8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+[hidden] { display: none !important; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  color-scheme: dark;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--azul); }
+
+/* ===== Botones ===== */
+.boton {
+  background: var(--azul);
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+.boton:hover { background: #2563eb; }
+
+.link {
+  background: none;
+  border: 0;
+  color: var(--celeste);
+  font-size: 20px;
+  padding: 0;
+}
+
+/* ===== App ===== */
+.app { display: flex; min-height: 100vh; }
+
+.menu {
+  width: 260px;
+  background: var(--panel);
+  border-right: 1px solid var(--borde);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#lista-vistas, #lista-proyectos { display: flex; flex-direction: column; gap: 2px; }
+
+#lista-vistas button,
+.proyecto button.ir {
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 10px;
+  color: var(--texto);
+}
+#lista-vistas button:hover,
+.proyecto:hover { background: var(--tarjeta); }
+#lista-vistas button.activa,
+.proyecto.activa { background: var(--tarjeta); color: var(--celeste); font-weight: 600; }
+
+.titulo-menu {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: var(--gris);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.proyecto { display: flex; align-items: center; border-radius: 8px; }
+.proyecto button.ir { flex: 1; }
+.proyecto .borrar { background: none; border: 0; color: var(--gris); padding: 4px 8px; }
+.proyecto .borrar:hover { color: #ff8fa3; }
+.punto { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; }
+
+/* ===== Contenido ===== */
+.contenido { flex: 1; max-width: 760px; margin: 0 auto; padding: 24px; }
+.contenido h2 { margin-top: 0; }
+#buscador { margin-bottom: 14px; }
+
+.vacio { color: var(--gris); text-align: center; margin-top: 40px; }
+
+/* ===== Tarjeta de tarea ===== */
+.tarea {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-left: 5px solid #64779e;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+.tarea.p1 { border-left-color: #fb7185; }
+.tarea.p2 { border-left-color: #fbbf24; }
+.tarea.p3 { border-left-color: var(--celeste); }
+
+.tarea input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--azul); }
+.tarea .info { flex: 1; }
+.tarea .detalle { color: var(--gris); font-size: 13px; margin-top: 2px; }
+.tarea .extra { font-size: 12px; color: var(--gris); margin-top: 6px; }
+.tarea .vencida { color: #ff8fa3; }
+.tarea.hecha .titulo { text-decoration: line-through; color: var(--gris); }
+
+.tarea .acciones button { background: none; border: 0; padding: 4px; opacity: 0.6; }
+.tarea .acciones button:hover { opacity: 1; }
+
+/* ===== Ventana de tarea ===== */
+dialog {
+  background: var(--panel);
+  color: var(--texto);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 20px;
+  width: min(460px, 92vw);
+}
+dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
+dialog form { display: flex; flex-direction: column; gap: 10px; }
+dialog label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--gris); }
+.botones { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.botones button:not(.boton) {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+/* ===== Celulares ===== */
+@media (max-width: 700px) {
+  .app { flex-direction: column; }
+  .menu { width: 100%; border-right: 0; border-bottom: 1px solid var(--borde); }
+}
